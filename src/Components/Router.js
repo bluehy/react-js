@@ -1,5 +1,6 @@
 import React from "react";
 import {HashRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import Header from "Components/Header";
 import Home from "Routes/Home";
 import Shows from "Routes/Shows";
 import Search from "Routes/Search";
@@ -7,6 +8,8 @@ import Search from "Routes/Search";
 
 export default () => (
    <Router>
+      <>
+      <Header />
       <Switch>
          <Route path ="/" exact component={Home} />
          {/* 어떤 URL에서 해당 Route를 render할 지 지정. */}
@@ -17,5 +20,6 @@ export default () => (
          {/* <Route path ="/" exact component={Detail} /> */}
          <Redirect from="*" to="/" />
       </Switch>
+      </>
    </Router>
 )
