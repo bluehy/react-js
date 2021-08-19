@@ -23,7 +23,8 @@ const Item = styled.li`
   width: 80px;
   height: 50px;
   text-align: center;
-  border-bottom: 5px solid ${props => (props.current ? "#8e44ad" : "transparent")};
+  border-bottom: 5px solid 
+   ${props => (props.current ? "#8e44ad" : "transparent")};
 `;
 
 const SLink = styled(Link)`
@@ -39,10 +40,10 @@ export default () => (
        <Item current={true}>
          <SLink to="/">Movies</SLink>
        </Item>
-       <Item current={true}>
+       <Item current={false}>
          <SLink to="/shows">Shows</SLink>
        </Item>
-       <Item current={true}>
+       <Item current={false}>
          <SLink to="/search">Search</SLink>
        </Item>
      </List>
