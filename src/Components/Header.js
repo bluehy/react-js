@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -23,8 +23,9 @@ const Item = styled.li`
   width: 80px;
   height: 50px;
   text-align: center;
-  border-bottom: 5px solid 
+  border-bottom: 3px solid 
    ${props => (props.current ? "#8e44ad" : "transparent")};
+  transition: border-bottom 0.5s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -34,18 +35,37 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
    <Header>
+      {/* {console.log(props)} */}
      <List>
-       <Item current={true}>
+       <Item current={ pathname === "/" }>
          <SLink to="/">Movies</SLink>
        </Item>
-       <Item current={false}>
+       <Item current={pathname === "/shows" }>
          <SLink to="/shows">Shows</SLink>
        </Item>
-       <Item current={false}>
+       <Item current={pathname === "/search" }>
          <SLink to="/search">Search</SLink>
        </Item>
      </List>
    </Header>
- );
+ ));
+
+ //const HeaderC = (props) => (
+//    <Header>
+//    <List>
+//      <Item current={true}>
+//        <SLink to="/">Movies</SLink>
+//      </Item>
+//      <Item current={false}>
+//        <SLink to="/shows">Shows</SLink>
+//      </Item>
+//      <Item current={false}>
+//        <SLink to="/search">Search</SLink>
+//      </Item>
+//    </List>
+//  </Header>
+//  );
+
+// export default withRouter(HeaderC);
