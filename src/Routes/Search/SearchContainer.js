@@ -5,8 +5,8 @@ import SearchPresenter from "./SearchPresenter";
 export default class extends React.Component{
    state={
       movieResults: null,
-      tvResults: null,
-      searchTerm: "code",
+      showResults: null,
+      searchTerm: "",
       loading: true,
       error:null
    }
@@ -25,11 +25,15 @@ export default class extends React.Component{
 
    searchByTerm = async(term) => {
       const { searchTerm } = this.state;
+      this.setState({loading:true});
       try {
-         const movieResults = await moviesApi.search(searchTerm);
-         const showResults = await tvApi.search(searchTerm);
-         console.log(movieResults, showResults);
-         this.setState({loading:true});
+         const {data: {results: movieResults}} = await moviesApi.search(searchTerm);
+         const {data: {results: showResults}} = await tvApi.search(searchTerm);
+         // console.log(movieResults, showResults);
+         this.setState({
+            movieResults,
+            showResults
+         });
       }catch {
          this.setState({
             error: "Can't find results."
@@ -40,13 +44,15 @@ export default class extends React.Component{
    }
 
    render(){
-      const {movieResults, tvResults, searchTerm, loading, error} = this.state;
+      const {movieResults, showResults, searchTerm, loading, error} = this.state;
+      // console.log(this.state);
       return <SearchPresenter 
          movieResults={movieResults}
-         tvResults={tvResults}
+         showResults={showResults}
          searchTerm={searchTerm}
          loading={loading}
          error={error}
+         handleSubmit={this.handleSubmit}
       />
    }
 }
