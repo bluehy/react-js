@@ -16,6 +16,7 @@ export default class extends React.Component{
          error: null,
          loading: true,
          isMovie: pathname.includes("/movie/")
+         //pathname에 movie경로가 있는지 확인
       }
    }
 
@@ -34,6 +35,7 @@ export default class extends React.Component{
          return push("/");
          //back to Home + 함수 종료
       }
+
       let result;
       try{
          if(isMovie){
