@@ -37,11 +37,16 @@ export default class extends React.Component{
       let result;
       try{
          if(isMovie){
-            const request = await moviesApi.detail(parsedId);
-            result = request.data;
+            ({data: result} = await moviesApi.detail(parsedId) )
+            // const {data: result} = ...
+            // result가 앞에서 먼저 선언되었기 때문에 const대신 () 를 사용. result는 가변변수기 때문에.
+            //data가 result고, data 안에 result가 있는 게 아니기 때문에 {result}가 아니다.
+            // const request = await moviesApi.detail(parsedId);
+            // result = request.data;
          }else{
-            const request = await tvApi.detail(parsedId);
-            result = request.data;
+            ({data: result} = await tvApi.detail(parsedId) )
+            // const request = await tvApi.detail(parsedId);
+            // result = request.data;
          }
          console.log(result);
       }catch{
