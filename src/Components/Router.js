@@ -4,7 +4,7 @@ import Header from "Components/Header";
 import Home from "Routes/Home";
 import Shows from "Routes/Shows";
 import Search from "Routes/Search";
-// import Detail from "Routes/Detail";
+import Detail from "Routes/Detail";
 
 export default () => (
    <Router>
@@ -17,9 +17,11 @@ export default () => (
          <Route path ="/shows" exact component={Shows} />
             <Route path="/shows/popular" render={() => <h1>popular</h1>} />
          <Route path ="/search" component={Search} />
-         {/* <Route path ="/" exact component={Detail} /> */}
+         <Route path ="/movie/:id" component={Detail} />
+         <Route path ="/show/:id" component={Detail} />
          <Redirect from="*" to="/" />
       </Switch>
       </>
    </Router>
 )
+
