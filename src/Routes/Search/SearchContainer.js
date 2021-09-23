@@ -11,12 +11,13 @@ export default class extends React.Component{
       error:null
    }
    
-   componentDidMount(){
-      this.handleSubmit();
-   }
+   // componentDidMount(){
+      // this.handleSubmit();
+   // }
 
 
-   handleSubmit = () => {
+   handleSubmit = event => {
+      event.preventDefault();
       const { searchTerm } = this.state;
       if(searchTerm !== ""){
          this.searchByTerm();
