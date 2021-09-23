@@ -2,7 +2,9 @@ import React from "react";
 import propTypes from "prop-types";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+   padding: 0px 20px;
+`;
 
 const Form = styled.form``;
 
