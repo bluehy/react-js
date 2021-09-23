@@ -2,6 +2,9 @@ import React from "react";
 import propTypes from "prop-types";
 import styled from "styled-components";
 
+import Loader from "Components/Loader";
+import Section from "Components/Section";
+
 const Container = styled.div`
    padding: 0px 20px;
 `;
@@ -32,6 +35,11 @@ const SearchPresenter = ({movieResults,
             onChange={updateTerm}
          />
       </Form>
+      {loading ? <Loader /> : <>
+      {/* 늘 결과값이 있는지 확인하는 과정을 생각할 것 */}
+         {movieResults && movieResults.length > 0 && <Section title="Movie Results">{movieResults.map(movie => <span key={movie.id}>{movie.title}</span>)}</Section>}
+         {showResults && showResults.length > 0 && <Section title="Show Results">{showResults.map(show => <span key={show.id}>{show.name}</span>)}</Section>}
+      </>}
    </Container>;
 
 SearchPresenter.propTypes = {
