@@ -24,6 +24,17 @@ export default class extends React.Component{
       }
    }
 
+   updateTerm = (event) => {
+      // console.log(event);
+      const { target : {value} } = event;
+      // console.log(value);
+      // one letter만 얻어낸다.
+      this.setState({
+         searchTerm:value
+      });
+      // 입력하는 내용이 업데이트 되면서 검색하고자 하는 단어를 구해낸다.
+   }
+
    searchByTerm = async(term) => {
       const { searchTerm } = this.state;
       this.setState({loading:true});
@@ -54,6 +65,7 @@ export default class extends React.Component{
          loading={loading}
          error={error}
          handleSubmit={this.handleSubmit}
+         updateTerm={this.updateTerm}
       />
    }
 }
