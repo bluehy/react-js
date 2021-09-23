@@ -6,9 +6,16 @@ const Container = styled.div`
    padding: 0px 20px;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+   margin-bottom: 50px;
+   width: 100%;
+`;
 
-const Input = styled.input``;
+const Input = styled.input`
+   all: unset;
+   font-size: 28px;
+   width: 100%;
+`;
 
 const SearchPresenter = ({movieResults,
    showResults,
