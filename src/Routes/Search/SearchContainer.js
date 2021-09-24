@@ -39,6 +39,8 @@ export default class extends React.Component{
       const { searchTerm } = this.state;
       this.setState({loading:true});
       try {
+         // throw Error();
+         // error 발생
          const {data: {results: movieResults}} = await moviesApi.search(searchTerm);
          const {data: {results: showResults}} = await tvApi.search(searchTerm);
          // console.log(movieResults, showResults);
