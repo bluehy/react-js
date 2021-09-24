@@ -7,7 +7,7 @@ export default class extends React.Component{
       movieResults: null,
       showResults: null,
       searchTerm: "",
-      loading: true,
+      loading: false,
       error:null
    }
    
