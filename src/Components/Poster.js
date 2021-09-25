@@ -15,15 +15,19 @@ const Title = styled.span``;
 
 const Year = styled.span``;
 
-const Poster = ({id, imageUrl, title, rating, year, isMovie = false }) => 
-   <Container>
-      <ImageContainer>
-         <Image bgUrl={imageUrl}></Image>
-         <Rating><span role="img" aria-label="rating">⭐</span>{" "}{rating}/10</Rating>
-      </ImageContainer>
-      <Title>{title}</Title>
-      <Year>{year}</Year>
-   </Container>
+const Poster = ({id, imageUrl, title, rating, year, isMovie = false }) => (
+   <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+      <Container>
+         <ImageContainer>
+            <Image bgUrl={imageUrl}></Image>
+            <Rating><span role="img" aria-label="rating">⭐</span>{" "}{rating}/10</Rating>
+         </ImageContainer>
+         <Title>{title}</Title>
+         <Year>{year}</Year>
+      </Container>
+   </Link>
+);
+   
 
 Poster.propTypes = {
    id: PropTypes.number.isRequired,
