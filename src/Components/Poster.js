@@ -2,18 +2,43 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import { moviesApi } from "api";
 
-const Container = styled.div``;
+const Container = styled.div`
+   font-size: 12px;
+`;
 
-const ImageContainer = styled.div``;
 
-const Image = styled.div``
+const Image = styled.div`
+   height: 180px;
+   border-radius: 5px;
+   margin-bottom: 5px;
+   background-image: url(${props => `http://image.tmdb.org//t/p/w300${props.bgUrl}`});
+   background-size:cover;
+   background-position:center center;
+   transition:opacity 0.2s ease-in-out;
+`;
 
 const Rating = styled.div``;
 
-const Title = styled.span``;
+const ImageContainer = styled.div`
+   margin-bottom: 5px;
+   &:hover{
+      ${Image}{
+         opacity:0.3;
+      }
+   }
+`;
 
-const Year = styled.span``;
+const Title = styled.span`
+   display:block;
+   margin-bottom: 5px;
+`;
+
+const Year = styled.span`
+   font-size: 10px;
+   color: rgba(255,255,255,0.7);
+`;
 
 const Poster = ({id, imageUrl, title, rating, year, isMovie = false }) => (
    <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
