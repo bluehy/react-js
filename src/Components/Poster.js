@@ -12,20 +12,29 @@ const Container = styled.div`
 const Image = styled.div`
    height: 180px;
    border-radius: 5px;
-   margin-bottom: 5px;
    background-image: url(${props => `http://image.tmdb.org//t/p/w300${props.bgUrl}`});
    background-size:cover;
    background-position:center center;
    transition:opacity 0.2s ease-in-out;
 `;
 
-const Rating = styled.div``;
+const Rating = styled.div`
+   bottom: 5px;
+   right: 5px;
+   position: absolute;
+   opacity: 0;
+   transition:opacity 0.2s ease-in-out;
+`;
 
 const ImageContainer = styled.div`
+   position: relative;
    margin-bottom: 5px;
    &:hover{
       ${Image}{
          opacity:0.3;
+      }
+      ${Rating}{
+         opacity:1;
       }
    }
 `;
@@ -33,6 +42,11 @@ const ImageContainer = styled.div`
 const Title = styled.span`
    display:block;
    margin-bottom: 5px;
+   font-size: 14px;
+   font-weight: bold;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 `;
 
 const Year = styled.span`
@@ -45,7 +59,7 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false }) => (
       <Container>
          <ImageContainer>
             <Image bgUrl={imageUrl}></Image>
-            <Rating><span role="img" aria-label="rating">⭐</span>{" "}{rating}/10</Rating>
+            <Rating><span role="img" aria-label="rating">{rating >=10 ? `⭐⭐⭐⭐⭐` : `${rating > 8 ? `⭐⭐⭐⭐☆`: "⭐⭐⭐☆ ☆" }`}</span>{" "}{rating}/10</Rating>
          </ImageContainer>
          <Title>{title}</Title>
          <Year>{year}</Year>
