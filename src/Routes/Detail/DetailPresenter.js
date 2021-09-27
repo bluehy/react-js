@@ -53,7 +53,9 @@ const Title = styled.h3`
    margin-bottom: 10px;
 `;
 
-const DescContainer = styled.div``;
+const DescContainer = styled.div`
+   margin:20px 0;
+`;
 
 const Desc = styled.span`
 `;
@@ -62,7 +64,12 @@ const Divider = styled.span`
    margin: 0 10px;
 `;
 
-const Overview = styled.p``;
+const Overview = styled.p`
+   width: 50%;
+   font-size: 12px;
+   opacity: 0.7;
+   line-height: 1.5;
+`;
 
 const DetailPresenter = ({result, error, loading}) => (
    loading ? <Loader /> : 
@@ -89,6 +96,7 @@ const DetailPresenter = ({result, error, loading}) => (
                   {/* genre의 갯수만큼 출력이 끝나면 / 를 생략하기 위해서 */}
             </DescContainer>
             <Overview>
+               {result.overview}
             </Overview>
          </Data>
       </Content>
