@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Section from "Components/Section";
@@ -56,11 +56,11 @@ const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => loadi
       );
 
 HomePresenter.propTypes = {
-   nowPlaying:propTypes.array,
-   upcoming:propTypes.array,
-   popular:propTypes.array,
-   loading:propTypes.bool.isRequired,
-   error:propTypes.string
+   nowPlaying:PropTypes.array,
+   upcoming:PropTypes.array,
+   popular:PropTypes.array,
+   loading:PropTypes.bool.isRequired,
+   error:PropTypes.string
 };
 
 export default HomePresenter;

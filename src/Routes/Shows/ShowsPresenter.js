@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Section from "Components/Section";
@@ -50,11 +50,11 @@ const ShowsPresenter = ({topRated, popular, airingToday, error, loading}) =>
       </Container>);
 
 ShowsPresenter.propTypes = {
-   topRated:propTypes.array,
-   popular:propTypes.array,
-   airingToday:propTypes.array,
-   loading:propTypes.bool.isRequired,
-   error:propTypes.string
+   topRated:PropTypes.array,
+   popular:PropTypes.array,
+   airingToday:PropTypes.array,
+   loading:PropTypes.bool.isRequired,
+   error:PropTypes.string
 }
 
 export default ShowsPresenter;

@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Loader from "Components/Loader";
@@ -65,13 +65,13 @@ const SearchPresenter = ({movieResults,
    </Container>;
 
 SearchPresenter.propTypes = {
-   movieResults:propTypes.array,
-   showResults:propTypes.array,
-   handleSubmit:propTypes.func.isRequired,
-   loading:propTypes.bool.isRequired,
-   error:propTypes.string,
-   searchTerm:propTypes.string,
-   updateTerm:propTypes.func.isRequired
+   movieResults:PropTypes.array,
+   showResults:PropTypes.array,
+   handleSubmit:PropTypes.func.isRequired,
+   loading:PropTypes.bool.isRequired,
+   error:PropTypes.string,
+   searchTerm:PropTypes.string,
+   updateTerm:PropTypes.func.isRequired
 }
 
 export default SearchPresenter;
