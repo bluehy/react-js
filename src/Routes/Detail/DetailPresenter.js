@@ -9,6 +9,7 @@ const Container = styled.div`
    /* - 띄어쓰기 놓치지말것 */
    width: 100%;
    position: relative;
+   padding: 50px;
 `;
 
 const Backdrop = styled.div`
@@ -22,12 +23,33 @@ const Backdrop = styled.div`
    background-size: cover;
    filter : blur(3px);
    opacity: 0.5;
+   /* z-index: 0; */
+`;
+
+const Content = styled.div`
+   display:flex;
+   width: 100%;
+   height: 100%;
+   position:relative;
+   z-index:1;
+`;
+
+const Cover = styled.div`
+   width: 30%;
+   height: 100%;
+   border-radius: 5px;
+   background-image: url(${props => props.bgImage});
+   background-position: center center;
+   background-size: cover;
 `;
 
 const DetailPresenter = ({result, error, loading}) => (
    loading ? <Loader /> : 
    <Container>
       <Backdrop bgImage={`http://image.tmdb.org//t/p/original${result.backdrop_path}`}/>
+      <Content>
+         <Cover bgImage={result.poster_path ? `http://image.tmdb.org//t/p/original${result.poster_path}` : require("../../Assets/noPosterIcon.png")}/>
+      </Content>
    </Container>
 );
 
