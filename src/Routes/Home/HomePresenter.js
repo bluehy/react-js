@@ -16,9 +16,41 @@ const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => loadi
    <Loader />
    ) : (
       <Container>
-         {nowPlaying && nowPlaying.length > 0 && <Section title="Now Playing">{nowPlaying.map(movie=><Poster />)}</Section>}
-         {upcoming && upcoming.length > 0 && <Section title="upcoming Movies">{upcoming.map(movie=><Poster />)}</Section>}
-         {popular && popular.length > 0 && <Section title="popular Movies">{popular.map(movie=><Poster />)}</Section>}
+         {nowPlaying && nowPlaying.length > 0 && <Section title="Now Playing">{nowPlaying.map(movie=>
+            <Poster 
+               key={movie.id} 
+               id={movie.id} 
+               title={movie.original_title} 
+               imageUrl={movie.poster_path}
+               rating={movie.vote_average}
+               isMovie={true}
+               year={movie.release_date && movie.release_date.substring(0,4)}
+               // year={movie.release_date ? movie.release_date.substring(0,4) : "no data"}
+               // some.substring(start,end) : 시작지점과 끝지점을 지정해 해당 문자열을 추출
+            />
+         )}</Section>}
+         {upcoming && upcoming.length > 0 && <Section title="upcoming Movies">{upcoming.map(movie=>
+            <Poster 
+               key={movie.id} 
+               id={movie.id} 
+               title={movie.original_title} 
+               imageUrl={movie.poster_path}
+               rating={movie.vote_average}
+               isMovie={true}
+               year={movie.release_date && movie.release_date.substring(0,4)}
+            />
+         )}</Section>}
+         {popular && popular.length > 0 && <Section title="popular Movies">{popular.map(movie=>
+            <Poster 
+               key={movie.id} 
+               id={movie.id} 
+               title={movie.original_title} 
+               imageUrl={movie.poster_path}
+               rating={movie.vote_average}
+               isMovie={true}
+               year={movie.release_date && movie.release_date.substring(0,4)}
+            />
+         )}</Section>}
          {error && <Message color="#8e44ad" text={error} /> }
       </Container>
       );
