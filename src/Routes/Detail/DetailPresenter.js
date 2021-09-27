@@ -43,12 +43,54 @@ const Cover = styled.div`
    background-size: cover;
 `;
 
+const Data = styled.div`
+   width: 70%;
+   margin-left: 10px;
+`;
+
+const Title = styled.h3`
+   font-size: 32px;
+   margin-bottom: 10px;
+`;
+
+const DescContainer = styled.div``;
+
+const Desc = styled.span`
+`;
+
+const Divider = styled.span`
+   margin: 0 10px;
+`;
+
+const Overview = styled.p``;
+
 const DetailPresenter = ({result, error, loading}) => (
    loading ? <Loader /> : 
    <Container>
       <Backdrop bgImage={`http://image.tmdb.org//t/p/original${result.backdrop_path}`}/>
       <Content>
          <Cover bgImage={result.poster_path ? `http://image.tmdb.org//t/p/original${result.poster_path}` : require("../../Assets/noPosterIcon.png")}/>
+         <Data>
+            <Title>{result.original_title ? result.original_title : result.original_name}</Title>
+            <DescContainer>
+               <Desc>
+                  {result.release_date ? result.release_date.substring(0,4) : result.first_air_date.substring(0,4)}
+               </Desc>
+               <Divider>·</Divider>
+               <Desc>
+                  {result.runtime ? result.runtime : result.episode_run_time[0]} min
+               </Desc>
+               <Divider>·</Divider>
+               <Desc>
+                  {result.genres && result.genres.map((genre, index) => index === result.genres.length - 1 
+                     ? genre.name 
+                     : `${genre.name} / ` )}
+               </Desc>
+                  {/* genre의 갯수만큼 출력이 끝나면 / 를 생략하기 위해서 */}
+            </DescContainer>
+            <Overview>
+            </Overview>
+         </Data>
       </Content>
    </Container>
 );
