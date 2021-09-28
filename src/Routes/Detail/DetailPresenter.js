@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 
 import Loader from "Components/Loader";
 
@@ -72,8 +73,20 @@ const Overview = styled.p`
 `;
 
 const DetailPresenter = ({result, error, loading}) => (
-   loading ? <Loader /> : 
+   loading ? (
+      // detail 화면 로딩 중 helmet
+   <>
+   <Helmet>
+      <title>Loading | 🍿</title>
+   </Helmet>
+   <Loader />
+   </>
+   ) : 
    <Container>
+      {/* detail 화면 진입 후 helmet */}
+      <Helmet>
+      <title>{result.original_title ? result.original_title : result.original_name} | 🍿</title>
+      </Helmet>
       <Backdrop bgImage={`http://image.tmdb.org//t/p/original${result.backdrop_path}`}/>
       <Content>
          <Cover bgImage={result.poster_path ? `http://image.tmdb.org//t/p/original${result.poster_path}` : require("../../Assets/noPosterIcon.png")}/>
