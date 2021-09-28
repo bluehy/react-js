@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 
 import Section from "Components/Section";
 import Loader from "Components/Loader";
@@ -11,8 +12,12 @@ const Container = styled.div`
    padding: 30px 20px;
 `;
 
-const ShowsPresenter = ({topRated, popular, airingToday, error, loading}) => 
-   loading ? (
+const ShowsPresenter = ({topRated, popular, airingToday, error, loading}) => (
+   <>
+   <Helmet>
+      <title>TV Shows | 🍿</title>
+   </Helmet>
+   {loading ? (
       <Loader/>
       ) : (
       <Container>
@@ -47,7 +52,9 @@ const ShowsPresenter = ({topRated, popular, airingToday, error, loading}) =>
             />
          )}</Section>}
          {error && <Message color="#8e44ad" text={error} /> }
-      </Container>);
+      </Container>)}
+   </>
+);
 
 ShowsPresenter.propTypes = {
    topRated:PropTypes.array,

@@ -17,7 +17,7 @@ const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => (
 <>
 {/* fragment */}
 <Helmet>
-   <title>Movies | CornBox🍿</title>
+   <title>Movies | 🍿</title>
 </Helmet>
 {/* loading을 기다리지 않고 title을 출력하기 위해서 */}
 {loading ? (
