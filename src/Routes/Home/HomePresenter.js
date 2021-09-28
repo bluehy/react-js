@@ -13,13 +13,17 @@ const Container = styled.div`
 `;
 
 
-const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => loading ? (
+const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => (
+<>
+{/* fragment */}
+<Helmet>
+   <title>Movies | CornBox🍿</title>
+</Helmet>
+{/* loading을 기다리지 않고 title을 출력하기 위해서 */}
+{loading ? (
    <Loader />
    ) : (
       <Container>
-         <Helmet>
-            <title>Movies | CornBox🍿</title>
-         </Helmet>
          {nowPlaying && nowPlaying.length > 0 && <Section title="Now Playing">{nowPlaying.map(movie=>
             <Poster 
                key={movie.id} 
@@ -56,7 +60,8 @@ const HomePresenter = ({nowPlaying, upcoming, popular, error, loading}) => loadi
             />
          )}</Section>}
          {error && <Message color="#8e44ad" text={error} /> }
-      </Container>
+      </Container>)}
+      </>
       );
 
 HomePresenter.propTypes = {
